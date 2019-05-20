@@ -1,4 +1,4 @@
-import getFixedGatsbyImage from "./getFixedGatsbyImage";
-import getFluidGatsbyImage from "./getFluidGatsbyImage";
+import getFixedGatsbyImage from './getFixedGatsbyImage'
+import getFluidGatsbyImage from './getFluidGatsbyImage'
 
 export { getFixedGatsbyImage, getFluidGatsbyImage }
