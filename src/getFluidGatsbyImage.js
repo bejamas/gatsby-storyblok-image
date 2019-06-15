@@ -64,7 +64,7 @@ function getFluidGatsbyImage(image, args = {}) {
       let baseUrl = buildUrl(originalPath, {
         ...options,
         ...size,
-        ...{ format: forceConvert || props.extension }
+        ...{ format: forceConvert }
       })
 
       acc.webp.push(`${webpUrl} ${currentWidth}w`)
@@ -77,7 +77,7 @@ function getFluidGatsbyImage(image, args = {}) {
   let src = buildUrl(originalPath, {
     ...options,
     ...imgSize,
-    ...{ format: forceConvert || extension }
+    ...{ format: forceConvert }
   })
 
   let srcWebp = buildUrl(originalPath, {
