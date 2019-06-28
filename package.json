@@ -9,7 +9,8 @@
   "scripts": {
     "build": "microbundle build",
     "watch": "microbundle watch",
-    "prepare": "cross-env NODE_ENV=production npm run build"
+    "prepare": "cross-env NODE_ENV=production npm run build",
+    "test": "mocha --require @babel/register"
   },
   "keywords": [
     "gatsby",
@@ -31,6 +32,7 @@
     "@babel/core": "^7.0.0",
     "babel-preset-gatsby-package": "^0.1.4",
     "cross-env": "^5.0.5",
-    "microbundle": "^0.11.0"
+    "microbundle": "^0.11.0",
+    "mocha": "^6.1.4"
   }
 }
