@@ -1,4 +1,4 @@
-import assert from 'assert'
+import { assert } from 'chai'
 import { isWebP, applyFilters } from '../utils/helpers'
 
 describe('utils/helpers.js', function() {
