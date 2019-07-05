@@ -6,3 +6,4 @@ node_modules
 .vscode
 utils
 dist/
+.nyc_output
