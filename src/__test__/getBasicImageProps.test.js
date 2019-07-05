@@ -29,6 +29,7 @@ describe('utils/getBasicImageProps.js', function() {
 
   describe('getBasicImageProps()', function() {
     const demoImageProperty = getBasicImageProps(demoImageUrl)
+
     it('passed valid image url return object with metadata property', function() {
       assert.property(demoImageProperty, 'metadata')
     })
@@ -39,6 +40,14 @@ describe('utils/getBasicImageProps.js', function() {
 
     it('passed valid image url return object with originalPath property', function() {
       assert.exists(demoImageProperty, demoImageProperty.extension)
+    })
+
+    it('return value when passed valid image url as an object', function() {
+      assert.isOk(getBasicImageProps({ image: demoImageUrl }))
+    })
+
+    it('should return false if no image url passed', function() {
+      assert.isFalse(getBasicImageProps())
     })
   })
 })
