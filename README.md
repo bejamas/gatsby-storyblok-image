@@ -44,7 +44,7 @@ import Img from 'gatsby-image'
 import { getFluidGatsbyImage } from 'gatsby-storyblok-image'
 
 const FluidImage = ({ blok }) => {
-  const fluidProps = getFixedGatsbyImage(blok.image, {
+  const fluidProps = getFluidGatsbyImage(blok.image, {
     maxWidth: 900
   })
 
