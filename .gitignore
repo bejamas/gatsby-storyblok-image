@@ -5,3 +5,5 @@ node_modules
 .DS_Store
 .vscode
 utils
+dist/
+.nyc_output
