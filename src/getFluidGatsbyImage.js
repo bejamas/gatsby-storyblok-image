@@ -1,7 +1,8 @@
 import getBasicImageProps from './utils/getBasicImageProps'
 import buildUrl from './utils/buildImageUrl'
-import { isWebP } from './utils/helpers'
+import { isWebP, transformSrcSet } from './utils/helpers'
 import { sizeMultipliersFluid, defaultFluidOptions } from './defaults'
+import cacheImageInfo from './utils/cacheImageInfo';
 
 function getFluidGatsbyImage(image, args = {}) {
   let imageProps = getBasicImageProps(image)
@@ -86,14 +87,32 @@ function getFluidGatsbyImage(image, args = {}) {
     ...{ format: 'webp' }
   })
 
+  const isProduction = process.env.NODE_ENV === 'production'
+  let srcPath, srcSetPath, srcWebpPath, srcSetWebpPath
+
+  if (isProduction && options.saveLocal) {
+    const [url] = src.split(' ')
+    const imageName = url.split('/').slice(-1)
+    cacheImageInfo({ imageName, src, srcSets, srcWebp })
+    srcPath = `/static/${imageName}`
+    srcSetPath = transformSrcSet(srcSets.base)
+    srcWebpPath = `/static/${imageName}.webp`
+    srcSetWebpPath = transformSrcSet(srcSets.base, '.webp')
+  } else {
+    srcPath = src
+    srcSetPath = srcSets.base.join(',\n') || null
+    srcWebpPath = srcWebp
+    srcSetWebpPath = srcSets.webp.join(',\n') || null
+  }
+
   return {
-    base64: useBase64 ? base64 || lqip : null,
+    base64: image.base64 || null,
     aspectRatio: desiredAspectRatio,
-    src,
-    srcWebp,
-    srcSet: srcSets.base.join(',\n') || null,
-    srcSetWebp: srcSets.webp.join(',\n') || null,
-    sizes
+    src: srcPath,
+    srcSet: srcSetPath,
+    srcWebp: srcWebpPath,
+    srcSetWebp: srcSetWebpPath,
+    sizes,
   }
 }
 
