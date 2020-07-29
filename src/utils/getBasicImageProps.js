@@ -9,8 +9,17 @@ function getBasicImageProps(image) {
   }
 
   if (typeof image === 'object') {
-    url = image.image
-    lqip = image.base64 ? image.base64 : null
+
+    if ( image.fieldtype === "asset" ) {
+
+      url = image.filename;
+
+    } else {
+      
+      url = image.image
+      lqip = image.base64 ? image.base64 : null
+
+    }
   }
 
   url = validImageUrlPattern.test(url) ? url : null
