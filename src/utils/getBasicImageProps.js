@@ -13,6 +13,7 @@ function getBasicImageProps(image) {
     lqip = image.base64 ? image.base64 : null
   }
 
+  url = url.replace('https:', '')
   url = validImageUrlPattern.test(url) ? url : null
 
   if (!url) {
