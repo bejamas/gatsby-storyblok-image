@@ -1,4 +1,4 @@
-const validImageUrlPattern = /^\/\/a.storyblok.com\/f\/[0-9]+\/[0-9]+x[0-9]+\/[A-Za-z0-9]+\/[\S]+\.[a-z]+/
+const validImageUrlPattern = /^\/\/a.storyblok.com\/f\/[0-9]+\/[0-9]+x[0-9]+\/[A-Za-z0-9]+\/[\S]+\.[A-Za-z]+/
 
 function getBasicImageProps(image) {
   let url = null
