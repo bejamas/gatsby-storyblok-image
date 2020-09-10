@@ -1,4 +1,4 @@
-const validImageUrlPattern = /^\/\/a.storyblok.com\/f\/[0-9]+\/[0-9]+x[0-9]+\/[A-Za-z0-9]+\/[\S]+\.[A-Za-z]+/
+const validImageUrlPattern = /^(https?:)?\/\/a.storyblok.com\/f\/[0-9]+\/[0-9]+x[0-9]+\/[A-Za-z0-9]+\/[\S]+\.[a-z]+/
 
 function getBasicImageProps(image) {
   let url = null
@@ -13,14 +13,14 @@ function getBasicImageProps(image) {
     lqip = image.base64 ? image.base64 : null
   }
 
-  url = url.replace('https:', '')
   url = validImageUrlPattern.test(url) ? url : null
 
   if (!url) {
     return false
   }
 
-  let originalPath = url.replace('//a.storyblok.com/', '')
+  const storyblokRegex = /^(https?:)?\/\/a.storyblok.com\//
+  let originalPath = url.replace(storyblokRegex, '')
 
   let [, , dimensions, , filename] = originalPath.split('/')
   let [width, height] = dimensions.split('x').map(num => parseInt(num, 10))
