@@ -23,7 +23,7 @@ function getBasicImageProps(image) {
   let originalPath = url.replace(storyblokRegex, '')
 
   let [, , dimensions, , filename] = originalPath.split('/')
-  let [width, height] = dimensions.split('x').map(num => parseInt(num, 10))
+  let [width, height] = dimensions.split('x').map(num => num ? parseInt(num, 10) : 1)
   let [, extension] = filename.split('.')
 
   let aspectRatio = width / height
