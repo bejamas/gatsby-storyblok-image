@@ -1,7 +1,7 @@
 import getBasicImageProps from './utils/getBasicImageProps'
 import buildUrl from './utils/buildImageUrl'
 import { isWebP } from './utils/helpers'
-import { sizeMultipliersFluid, defaultFluidOptions } from './defaults'
+import { sizeMultipliersFluid, defaultFluidOptions } from './defaults.js'
 
 function getFluidGatsbyImage(image, args = {}) {
   let imageProps = getBasicImageProps(image)
@@ -38,7 +38,7 @@ function getFluidGatsbyImage(image, args = {}) {
     forceConvert = 'jpg'
   }
 
-  let sizes = options.sizes || `(max-width: ${maxWidth}px) 100vw, ${maxWidth}px`
+  let sizes = maxWidth ? options.sizes || `(max-width: ${maxWidth}px) 100vw, ${maxWidth}px` : null
   let widths = sizeMultipliersFluid
     .map(scale => Math.round(maxWidth * scale))
     .filter(width => width < dimensions.width)
