@@ -1,5 +1,4 @@
 export const DEFAULT_FIXED_WIDTH = 400
-export const DEFAULT_FLUID_MAX_WIDTH = 800
 export const STORYBLOK_BASE_URL = 'https://img2.storyblok.com'
 
 export const sizeMultipliersFixed = [1, 1.5, 2, 3]
@@ -17,8 +16,6 @@ export const defaultOptions = {
 
 export const defaultFluidOptions = {
   ...defaultOptions,
-  maxWidth: DEFAULT_FLUID_MAX_WIDTH,
-  maxHeight: null
 }
 
 export const defaultFixedOptions = {
