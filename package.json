@@ -1,6 +1,6 @@
 {
   "name": "gatsby-storyblok-image",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Adds gatsby-image to Gatsby & Storyblok as a content source.",
   "source": "src/index.js",
   "main": "dist/index.js",
