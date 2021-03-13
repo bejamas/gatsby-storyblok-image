@@ -1,5 +1,5 @@
 import getBasicImageProps from './utils/getBasicImageProps'
-import buildUrl from './utils/buildImageUrl'
+import buildUrl, { buildLowFiUrl } from './utils/buildImageUrl'
 import { isWebP } from './utils/helpers'
 import { sizeMultipliersFixed, defaultFixedOptions } from './defaults'
 
@@ -87,7 +87,7 @@ function getFixedGatsbyImage(image, args = {}) {
   // base64String
 
   return {
-    base64: useBase64 ? base64 || lqip : null,
+    base64: buildLowFiUrl(originalPath, { width, height, aspectRatio: desiredAspectRatio }),
     aspectRatio: desiredAspectRatio,
     width: Math.round(width),
     height: outputHeight,

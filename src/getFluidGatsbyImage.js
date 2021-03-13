@@ -1,5 +1,5 @@
 import getBasicImageProps from './utils/getBasicImageProps'
-import buildUrl from './utils/buildImageUrl'
+import buildUrl, { buildLowFiUrl } from './utils/buildImageUrl'
 import { isWebP } from './utils/helpers'
 import { sizeMultipliersFluid, defaultFluidOptions } from './defaults'
 
@@ -40,13 +40,13 @@ function getFluidGatsbyImage(image, args = {}) {
 
   let sizes = options.sizes || `(max-width: ${maxWidth}px) 100vw, ${maxWidth}px`
   let widths = sizeMultipliersFluid
-    .map(scale => Math.round(maxWidth * scale))
-    .filter(width => width < dimensions.width)
+    .map((scale) => Math.round(maxWidth * scale))
+    .filter((width) => width < dimensions.width)
     .concat(dimensions.width)
 
   let initial = { webp: [], base: [] }
   let srcSets = widths
-    .filter(currentWidth => currentWidth < dimensions.width)
+    .filter((currentWidth) => currentWidth < dimensions.width)
     .reduce((acc, currentWidth) => {
       let currentHeight = Math.round(currentWidth / desiredAspectRatio)
 
@@ -87,7 +87,7 @@ function getFluidGatsbyImage(image, args = {}) {
   })
 
   return {
-    base64: useBase64 ? base64 || lqip : null,
+    base64: buildLowFiUrl(originalPath, { width: maxWidth, height: maxHeight, aspectRatio: desiredAspectRatio }),
     aspectRatio: desiredAspectRatio,
     src,
     srcWebp,

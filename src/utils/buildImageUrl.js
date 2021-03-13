@@ -35,4 +35,12 @@ function buildImageUrl(originalPath, image) {
   return url
 }
 
+export function buildLowFiUrl(originalPath, {width, height, aspectRatio }) {
+  return buildImageUrl(originalPath, {
+    width: (width / 3).toFixed(0),
+    height: (height / 3).toFixed(0),
+    quality: 10
+  })
+}
+
 export default buildImageUrl
