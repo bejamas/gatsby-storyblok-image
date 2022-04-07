@@ -35,11 +35,11 @@ function getFixedGatsbyImage(image, args = {}) {
     forceConvert = 'jpg'
   }
 
-  let widths = sizeMultipliersFixed.map(scale => Math.round(width * scale))
+  let widths = sizeMultipliersFixed.map((scale) => Math.round(width * scale))
   let initial = { webp: [], base: [] }
 
   let srcSets = widths
-    .filter(currentWidth => currentWidth < dimensions.width)
+    .filter((currentWidth) => currentWidth < dimensions.width)
     .reduce((acc, currentWidth, i) => {
       let resolution = `${sizeMultipliersFixed[i]}x`
       let currentHeight = Math.round(currentWidth / desiredAspectRatio)
@@ -92,9 +92,9 @@ function getFixedGatsbyImage(image, args = {}) {
     width: Math.round(width),
     height: outputHeight,
     src,
-    srcWebp,
-    srcSet: srcSets.base.join(',\n') || null,
-    srcSetWebp: srcSets.webp.join(',\n') || null
+    // srcWebp,
+    srcSet: srcSets.base.join(',\n') || null
+    // srcSetWebp: srcSets.webp.join(',\n') || null
   }
 }
 

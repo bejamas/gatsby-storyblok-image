@@ -8,6 +8,8 @@ function buildImageUrl(originalPath, image) {
 
   let url = STORYBLOK_BASE_URL
 
+  url += `/${originalPath}/m`
+
   if (width && height) {
     url += `/${width}x${height}`
   }
@@ -23,19 +25,16 @@ function buildImageUrl(originalPath, image) {
   ]
 
   // remove falsy elements
-  filters = filters.filter(element => Boolean(element) === true)
+  filters = filters.filter((element) => Boolean(element) === true)
 
   if (filters.length > 0) {
     url += applyFilters(filters)
   }
 
-  // add original path at the end
-  url += `/${originalPath}`
-
   return url
 }
 
-export function buildLowFiUrl(originalPath, {width, height, aspectRatio }) {
+export function buildLowFiUrl(originalPath, { width, height, aspectRatio }) {
   return buildImageUrl(originalPath, {
     width: (width / 3).toFixed(0),
     height: (height / 3).toFixed(0),
