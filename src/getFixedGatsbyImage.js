@@ -92,9 +92,9 @@ function getFixedGatsbyImage(image, args = {}) {
     width: Math.round(width),
     height: outputHeight,
     src,
-    // srcWebp,
-    srcSet: srcSets.base.join(',\n') || null
-    // srcSetWebp: srcSets.webp.join(',\n') || null
+    srcWebp,
+    srcSet: srcSets.base.join(',\n') || null,
+    srcSetWebp: srcSets.webp.join(',\n') || null
   }
 }
 
