@@ -6,7 +6,7 @@ export const sizeMultipliersFixed = [1, 1.5, 2, 3]
 export const sizeMultipliersFluid = [0.25, 0.5, 1, 1.5, 2, 3]
 
 export const defaultOptions = {
-  quality: 100,
+  quality: 90,
   smartCrop: true,
   format: null,
   fill: null,
